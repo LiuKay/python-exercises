@@ -20,7 +20,11 @@ def lookup_person(db):
     field = input("What do you like to know?(name, age, phone) ")
     field = field.strip().lower()
 
-    print(field.capitalize() + ":", db[pid][field])
+    try:
+        obj = db[pid]
+        print(field.capitalize() + ":", obj[field])
+    except KeyError:
+        print(f"Oops! the ID is not existed:{pid}")
 
 
 def print_help():
